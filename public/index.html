@@ -214,19 +214,19 @@
         .hero-content {
             position: relative;
             z-index: 3;
-            max-width: 580px;
+            max-width: 540px;
         }
 
         .hero-illustration {
             position: absolute;
-            right: -5rem;
+            right: -3rem;
             top: 50%;
             transform: translateY(-50%);
             z-index: 1;
         }
 
         .hero-illustration img {
-            width: 750px;
+            width: 700px;
             height: auto;
         }
 
@@ -329,10 +329,6 @@
         .problem-body > p {
             color: rgba(255,255,255,0.75);
             font-size: 1.05rem;
-        }
-
-        .problem-body > p:first-child {
-            margin-bottom: 2.5rem;
         }
 
         .problem-lists {
@@ -918,9 +914,8 @@
 
         .hero-illustration-mobile img {
             width: 100%;
-            max-width: 320px;
+            max-width: 300px;
             height: auto;
-            margin: 0 auto;
             display: block;
         }
 
@@ -929,9 +924,19 @@
             pointer-events: none;
         }
 
-        /* Confused bot — positioned in negative space to the right */
-        .problem .section-inner {
-            position: relative;
+        /* Confused bot — grid layout like chart, image left of headline */
+        .problem-header {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 2rem;
+            align-items: start;
+            margin-bottom: 2rem;
+        }
+
+        .problem-subhead {
+            color: rgba(255,255,255,0.75);
+            font-size: 1.05rem;
+            margin-top: 1.5rem;
         }
 
         .problem-lists {
@@ -939,20 +944,16 @@
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
             margin-bottom: 2.5rem;
-            max-width: 650px;
         }
 
         .problem-bot {
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-45%);
-            z-index: 1;
+            display: flex;
+            align-items: flex-start;
         }
 
         .problem-bot img {
-            height: 440px;
-            width: auto;
+            width: 200px;
+            height: auto;
         }
 
         /* Chart in solution */
@@ -1019,28 +1020,53 @@
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
         /* ═══════ RESPONSIVE ═══════ */
+
+        /* iPad / tablet — bots scale down alongside text */
         @media (max-width: 1024px) {
             section { padding: 4.5rem 2rem; }
             nav { padding: 1rem 1.5rem; }
             .hero { padding: 8rem 2rem 5rem; }
-            .hero-inner { grid-template-columns: 1fr; }
-            .hero-illustration-desktop { display: none; }
-            .hero-illustration-mobile { display: block; margin: 1.5rem 0; }
+            .hero-content { max-width: 100%; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero-illustration {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .hero-inner {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+                align-items: center;
+            }
+            .hero-illustration-desktop { display: flex !important; }
+            .hero-illustration-mobile { display: none !important; }
+            .hero-illustration img { width: 100%; max-width: 420px; }
             .creators-grid,
             .framework-grid { grid-template-columns: 1fr 1fr; }
             .plan-steps { grid-template-columns: 1fr; gap: 1.5rem; }
             .testimonials-grid { grid-template-columns: 1fr; }
-            .problem-lists { grid-template-columns: 1fr; max-width: 100%; }
-            .problem-bot { position: relative; right: auto; top: auto; transform: none; margin: 1.5rem auto; text-align: center; }
-            .problem-bot img { height: 220px; }
+            .problem-header { grid-template-columns: 1fr; }
+            .problem-bot { justify-content: flex-start; margin-bottom: 0.5rem; }
+            .problem-bot img { width: 130px; }
+            .problem-lists { grid-template-columns: 1fr; }
             .solution-header { grid-template-columns: 1fr; }
             .solution-chart { justify-content: flex-start; margin-bottom: 0.5rem; }
             .solution-chart img { width: 156px; }
             .creator-photo { width: 100px; }
         }
 
+        /* Mobile — bots below quote, shifted left, tight spacing */
         @media (max-width: 640px) {
             .hero h1 { font-size: 2.4rem; }
+            .hero-content { max-width: 100%; }
+            .hero-inner { grid-template-columns: 1fr; }
+            .hero-illustration-desktop { display: none !important; }
+            .hero-illustration-mobile { display: block !important; margin: 0.75rem 0 0.5rem; }
             .framework-grid,
             .creators-grid { grid-template-columns: 1fr; }
             .hero-ctas,
@@ -1054,7 +1080,7 @@
             .problem-conclusion { white-space: normal; }
             .final-cta .section-headline { white-space: normal; }
             .final-cta p { white-space: normal; }
-            .problem-bot img { height: 180px; }
+            .problem-bot img { width: 100px; }
             .creator-photo { width: 80px; }
         }
     </style>
@@ -1097,11 +1123,17 @@
     <!-- ═══════ 2. PROBLEM ═══════ -->
     <section class="problem">
         <div class="section-inner reveal">
-            <h2 class="section-headline">You're leading smart people, so why does alignment feel so <em>hard?</em></h2>
+            <div class="problem-header">
+                <div class="problem-bot">
+                    <img src="Images/confused-bot-noshadow.svg" alt="Confused about alignment">
+                </div>
+                <div>
+                    <h2 class="section-headline">You're leading smart people, so why does alignment feel so <em>hard?</em></h2>
+                    <p class="problem-subhead">As a leader, you're responsible for decisions that matter.</p>
+                </div>
+            </div>
 
             <div class="problem-body">
-                <p>As a leader, you're responsible for decisions that matter.</p>
-
                 <div class="problem-lists">
                     <div class="problem-list">
                         <h4>You decide</h4>
@@ -1119,9 +1151,6 @@
                             <li>How decisions get made</li>
                         </ul>
                     </div>
-                </div>
-                <div class="problem-bot">
-                    <img src="Images/confused-bot-noshadow.svg" alt="Confused about alignment">
                 </div>
 
                 <p class="problem-after-lists">Progress slows. Tension rises. And important work gets harder than it should be.</p>
