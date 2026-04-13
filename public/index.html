@@ -927,11 +927,13 @@
             pointer-events: none;
         }
 
-        /* Confused bot — absolutely positioned left of headline */
+        /* Confused bot — grid layout left of headline on desktop */
         .problem-header {
-            position: relative;
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 1.5rem;
+            align-items: start;
             margin-bottom: 2rem;
-            min-height: 220px;
         }
 
         .problem-subhead {
@@ -948,21 +950,14 @@
         }
 
         .problem-bot {
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: 1;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
         }
 
         .problem-bot img {
-            width: 320px;
+            width: 100%;
             height: auto;
-        }
-
-        .problem-header > div:last-child {
-            position: relative;
-            z-index: 2;
-            padding-left: 200px;
         }
 
         /* Mobile: bot floats top-right of headline */
@@ -1050,9 +1045,13 @@
             .framework-grid { grid-template-columns: 1fr 1fr; }
             .plan-steps { grid-template-columns: 1fr; gap: 1.5rem; }
             .testimonials-grid { grid-template-columns: 1fr; }
-            .problem-bot img { width: 220px; }
-            .problem-header > div:last-child { padding-left: 160px; }
-            .problem-header { min-height: 160px; }
+            .problem-header { display: block; }
+            .problem-bot {
+                float: right;
+                width: 160px;
+                margin: 0 0 1rem 1.5rem;
+            }
+            .problem-bot img { width: 100%; }
             .problem-lists { grid-template-columns: 1fr; }
             .solution-header { grid-template-columns: 1fr; }
             .solution-chart { justify-content: flex-start; margin-bottom: 0.5rem; }
@@ -1093,8 +1092,6 @@
             .final-cta .section-headline { white-space: normal; }
             .final-cta p { white-space: normal; }
             .problem-bot { display: none; }
-            .problem-header > div:last-child { padding-left: 0; }
-            .problem-header { min-height: auto; }
             .problem-bot-mobile {
                 display: block;
                 float: right;
