@@ -323,7 +323,7 @@
 
         .problem .section-label { color: rgba(255,255,255,0.5); }
         .problem .section-label::before { background: rgba(255,255,255,0.3); }
-        .problem .section-headline { color: var(--white); max-width: 100%; margin-bottom: 1.5rem; }
+        .problem .section-headline { color: var(--white); margin-bottom: 1.5rem; }
         .problem .section-headline em { color: var(--blue-light); }
 
         .problem-body { max-width: 100%; }
@@ -927,13 +927,11 @@
             pointer-events: none;
         }
 
-        /* Confused bot — grid layout, image left of headline */
+        /* Confused bot — absolutely positioned left of headline */
         .problem-header {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 2rem;
-            align-items: start;
+            position: relative;
             margin-bottom: 2rem;
+            min-height: 220px;
         }
 
         .problem-subhead {
@@ -950,13 +948,21 @@
         }
 
         .problem-bot {
-            display: flex;
-            align-items: flex-start;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 1;
         }
 
         .problem-bot img {
-            width: 280px;
+            width: 320px;
             height: auto;
+        }
+
+        .problem-header > div:last-child {
+            position: relative;
+            z-index: 2;
+            padding-left: 200px;
         }
 
         /* Mobile: bot floats top-right of headline */
@@ -1044,7 +1050,9 @@
             .framework-grid { grid-template-columns: 1fr 1fr; }
             .plan-steps { grid-template-columns: 1fr; gap: 1.5rem; }
             .testimonials-grid { grid-template-columns: 1fr; }
-            .problem-bot img { width: 180px; }
+            .problem-bot img { width: 220px; }
+            .problem-header > div:last-child { padding-left: 160px; }
+            .problem-header { min-height: 160px; }
             .problem-lists { grid-template-columns: 1fr; }
             .solution-header { grid-template-columns: 1fr; }
             .solution-chart { justify-content: flex-start; margin-bottom: 0.5rem; }
@@ -1084,13 +1092,14 @@
             .problem-conclusion { white-space: normal; }
             .final-cta .section-headline { white-space: normal; }
             .final-cta p { white-space: normal; }
-            .problem-header { grid-template-columns: 1fr; }
             .problem-bot { display: none; }
+            .problem-header > div:last-child { padding-left: 0; }
+            .problem-header { min-height: auto; }
             .problem-bot-mobile {
                 display: block;
                 float: right;
-                width: 100px;
-                margin: 0 0 0.5rem 0.75rem;
+                width: 140px;
+                margin: -0.5rem 0 0.5rem 0.75rem;
             }
             .problem-bot-mobile img { width: 100%; height: auto; }
             .creator-photo { width: 80px; }
