@@ -216,16 +216,18 @@
             z-index: 3;
         }
 
+        .hero-br { display: inline; }
+
         .hero-illustration {
             position: absolute;
-            right: -3rem;
+            right: 0;
             top: 50%;
             transform: translateY(-50%);
             z-index: 1;
         }
 
         .hero-illustration img {
-            width: 700px;
+            width: 650px;
             height: auto;
         }
 
@@ -910,13 +912,14 @@
 
         .hero-illustration-mobile {
             display: none;
+            text-align: right;
         }
 
         .hero-illustration-mobile img {
             width: 100%;
             max-width: 300px;
             height: auto;
-            display: block;
+            display: inline-block;
         }
 
         .hero-illustration-desktop {
@@ -1026,8 +1029,8 @@
             section { padding: 4.5rem 2rem; }
             nav { padding: 1rem 1.5rem; }
             .hero { padding: 8rem 2rem 5rem; }
-            .hero-illustration img { width: 520px; }
-            .hero-illustration { right: -4rem; }
+            .hero-illustration img { width: 480px; }
+            .hero-illustration { right: 0; }
             .hero-illustration-desktop { display: block !important; }
             .hero-illustration-mobile { display: none !important; }
             .hero-subhead { max-width: 400px; }
@@ -1049,8 +1052,8 @@
         /* ═══════ BREAKPOINT 2: ≤820px — iPad portrait zone ═══════ */
         @media (max-width: 820px) {
             .hero { padding: 7rem 2rem 4rem; }
-            .hero-illustration img { width: 360px; }
-            .hero-illustration { right: -3rem; top: 55%; }
+            .hero-illustration img { width: 320px; }
+            .hero-illustration { right: 0; top: 55%; }
             .hero-subhead { max-width: 340px; }
             .hero-stakes { max-width: 340px; }
         }
@@ -1059,11 +1062,12 @@
         @media (max-width: 640px) {
             .hero { padding: 6rem 1.5rem 2.5rem; }
             .hero h1 { font-size: 2.2rem; margin-bottom: 1.25rem; }
+            .hero-br { display: none; }
             .hero-subhead { max-width: 100%; margin-bottom: 1rem; }
             .hero-stakes { max-width: 100%; margin-bottom: 1.75rem; }
             .hero-illustration-desktop { display: none !important; }
-            .hero-illustration-mobile { display: block !important; margin: 0.75rem 0 0.25rem; }
-            .hero-illustration-mobile img { max-width: 280px; }
+            .hero-illustration-mobile { display: block !important; margin: 0.75rem 0 0.25rem; text-align: right; }
+            .hero-illustration-mobile img { max-width: 280px; display: inline-block; }
             .framework-grid,
             .creators-grid { grid-template-columns: 1fr; }
             .hero-ctas,
@@ -1100,7 +1104,7 @@
     <section class="hero">
         <div class="hero-inner">
             <div class="hero-content">
-                <h1>When leaders aren't aligned, <em>everything</em> costs more.</h1>
+                <h1>When leaders aren't<br class="hero-br"> aligned, <em>everything</em><br class="hero-br"> costs more.</h1>
                 <p class="hero-subhead">The Personality Profile is a one-page framework built for leadership teams. It reveals how your organization actually thinks, decides, and operates. It's how teams get aligned, fast.</p>
                 <p class="hero-stakes">Without shared clarity, even great leaders pull in different directions.</p>
                 <div class="hero-illustration-mobile">
