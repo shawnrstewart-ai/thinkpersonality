@@ -323,10 +323,10 @@
 
         .problem .section-label { color: rgba(255,255,255,0.5); }
         .problem .section-label::before { background: rgba(255,255,255,0.3); }
-        .problem .section-headline { color: var(--white); max-width: 720px; margin-bottom: 1.5rem; }
+        .problem .section-headline { color: var(--white); max-width: 100%; margin-bottom: 1.5rem; }
         .problem .section-headline em { color: var(--blue-light); }
 
-        .problem-body { max-width: 800px; }
+        .problem-body { max-width: 100%; }
 
         .problem-body > p {
             color: rgba(255,255,255,0.75);
@@ -927,7 +927,7 @@
             pointer-events: none;
         }
 
-        /* Confused bot — grid layout like chart, image left of headline */
+        /* Confused bot — grid layout, image left of headline */
         .problem-header {
             display: grid;
             grid-template-columns: auto 1fr;
@@ -957,6 +957,11 @@
         .problem-bot img {
             width: 200px;
             height: auto;
+        }
+
+        /* Mobile: bot floats top-right of headline */
+        .problem-bot-mobile {
+            display: none;
         }
 
         /* Chart in solution */
@@ -1039,9 +1044,7 @@
             .framework-grid { grid-template-columns: 1fr 1fr; }
             .plan-steps { grid-template-columns: 1fr; gap: 1.5rem; }
             .testimonials-grid { grid-template-columns: 1fr; }
-            .problem-header { grid-template-columns: 1fr; }
-            .problem-bot { justify-content: flex-start; margin-bottom: 0.5rem; }
-            .problem-bot img { width: 130px; }
+            .problem-bot img { width: 150px; }
             .problem-lists { grid-template-columns: 1fr; }
             .solution-header { grid-template-columns: 1fr; }
             .solution-chart { justify-content: flex-start; margin-bottom: 0.5rem; }
@@ -1081,7 +1084,15 @@
             .problem-conclusion { white-space: normal; }
             .final-cta .section-headline { white-space: normal; }
             .final-cta p { white-space: normal; }
-            .problem-bot img { width: 100px; }
+            .problem-header { grid-template-columns: 1fr; }
+            .problem-bot { display: none; }
+            .problem-bot-mobile {
+                display: block;
+                float: right;
+                width: 80px;
+                margin: 0 0 0.5rem 0.75rem;
+            }
+            .problem-bot-mobile img { width: 100%; height: auto; }
             .creator-photo { width: 80px; }
         }
     </style>
@@ -1129,6 +1140,9 @@
                     <img src="Images/confused-bot-noshadow.svg" alt="Confused about alignment">
                 </div>
                 <div>
+                    <div class="problem-bot-mobile">
+                        <img src="Images/confused-bot-noshadow.svg" alt="Confused about alignment">
+                    </div>
                     <h2 class="section-headline">You're leading smart people, so why does alignment feel so <em>hard?</em></h2>
                     <p class="problem-subhead">As a leader, you're responsible for decisions that matter.</p>
                 </div>
